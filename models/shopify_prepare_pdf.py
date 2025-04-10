@@ -132,7 +132,7 @@ class Shopify(models.Model):
                 config = pdfkit.configuration(wkhtmltopdf=bytes("/usr/local/bin/wkhtmltopdf", 'utf8'))
                 pdf_content = pdfkit.from_string(merge_html_css, False, options=options, css=PDF_FONTS_CSS_PATH,
                                                  configuration=config)
-                reader = PyPDF2.PdfFileReader(io.BytesIO(pdf_content), strict=False, overwriteWarnings=False)
+                reader = PyPDF2.PdfReader(io.BytesIO(pdf_content), strict=False)
                 for page in range(reader.getNumPages()):
                     pdf_writer.addPage(reader.getPage(page))
         _buffer = io.BytesIO()

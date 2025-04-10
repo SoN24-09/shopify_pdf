@@ -30,7 +30,8 @@
                     <t t-raw="config"/>
                 </script>
 
-                <t t-call-assets="shopify_order_printer.pdf_js_package_assets"/>
+<!--                <t t-call-assets="shopify_order_printer.pdf_js_package_assets"/>-->
+                <script type="text/javascript" src="/shopify_order_printer/static/src/js/package.js"></script>
             </body>
         </template>
 
@@ -97,7 +98,8 @@
                     "shop_url":'<t t-raw="shop_url"/>',
                     }
                 </script>
-                <t t-call-assets="shopify_order_printer.pdf_js_package_assets"/>
+<!--                <t t-call-assets="shopify_order_printer.pdf_js_package_assets"/>-->
+                <script type="text/javascript" src="/shopify_order_printer/static/src/js/package.js"></script>
             </body>
         </template>
 

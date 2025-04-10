@@ -3,7 +3,7 @@
         <record id='shopify_order_printer_shop_action' model='ir.actions.act_window'>
             <field name="name">Shopify Order Printer</field>
             <field name="res_model">shopify.pdf.shop</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">list,form</field>
         </record>
 
         <record id="shopify_shop_view_form" model="ir.ui.view">
@@ -44,11 +44,11 @@
                         </group>
                         <group>
                             <field name="templates">
-                                <tree>
+                                <list>
                                     <field name="id"/>
                                     <field name="name"/>
                                     <field name="default"/>
-                                </tree>
+                                </list>
                             </field>
                         </group>
                     </sheet>
@@ -140,14 +140,14 @@
                 </form>
             </field>
         </record>
-        <record id="shopify_pdf_shop_template_default_tree" model="ir.ui.view">
+        <record id="shopify_pdf_shop_template_default_list" model="ir.ui.view">
             <field name="name">Shopify Template Default</field>
             <field name="model">shopify.pdf.template.default</field>
             <field name="arch" type="xml">
-                <tree>
+                <list>
                     <field name="name"/>
                     <field name="type"/>
-                </tree>
+                </list>
             </field>
         </record>
 
@@ -155,7 +155,7 @@
             <field name="name">Shopify Template Default</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">shopify.pdf.template.default</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">list,form</field>
         </record>
 
         <menuitem id="order_printer_template_default" name="Template Default" parent="order_printer_menu" sequence="18" action="order_printer_template_default_act"/>

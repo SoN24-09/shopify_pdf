@@ -19,6 +19,7 @@ from odoo.tools import date_utils
 from ..oauth2.auth import ShopifyHelper as ShopifyHelper, ShopifyAuth
 from ..oauth2.decorator import shop_login_required
 from datetime import datetime
+from odoo.tools.json import json_default
 
 SHOPIFY_APP_REDIRECT_PATH = '/admin/apps/'
 
@@ -34,10 +35,10 @@ class Request(http.Request):
             return
 
         if sess.should_rotate:
-            sess['_geoip'] = self.geoip
+            sess['_geoip'] = self.geoip.to_dict() if hasattr(self.geoip, 'to_dict') else str(self.geoip)
             root.session_store.rotate(sess, self.env)  # it saves
         elif sess.is_dirty:
-            sess['_geoip'] = self.geoip
+            sess['_geoip'] = self.geoip.to_dict() if hasattr(self.geoip, 'to_dict') else str(self.geoip)
             root.session_store.save(sess)
 
         cookie_sid = self.httprequest.cookies.get('session_id')
@@ -57,7 +58,7 @@ class Request(http.Request):
         :param collections.abc.Mapping cookies: cookies to set on the client
         :rtype: :class:`~odoo.http.Response`
         """
-        data = json.dumps(data, ensure_ascii=False, default=date_utils.json_default)
+        data = json.dumps(data, ensure_ascii=False, default=json_default)
 
         headers = werkzeug.datastructures.Headers(headers)
         headers['Content-Length'] = len(data)

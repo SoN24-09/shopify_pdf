@@ -6,7 +6,7 @@
         <field name="priority" eval="55"/>
         <field name="inherit_id" ref="base.res_config_settings_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//div[hasclass('settings')]" position="inside">
+            <xpath expr="//form[hasclass('oe_form_configuration')]" position="inside">
                 <div class="app_settings_block" string="Shopify PDF"
                      data-key="shopify_order_printer"
                      groups="base.group_system">
